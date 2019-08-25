@@ -1,0 +1,31 @@
+<html>
+    <body>
+         <p>
+            <a href="http://localhost:8080">Home</a>
+            <a href="http://localhost:8080/addtask">Add Task</a>
+            </p>
+        <head>
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Due Date</td>
+                <td>Description</td>
+            </tr>
+            <% for ( var i =0; i< db.length;i++){ %>
+                <tr>
+                    <td>
+                        <%= db[i].Name %>
+                    </td>
+                    <td>
+                        <%= db[i].DueDate %>
+                    </td>
+                    <td>
+                        <%= db[i].Description %>
+                    </td>
+                </tr>
+                <% }%>
+        </table>
+    </body>
+</html>
