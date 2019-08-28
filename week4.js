@@ -1,16 +1,20 @@
 let express = require("express");
 let app = express();
 let morgan = require("morgan");
+// It generates logs automatically to any request being made
 let bodyParser = require('body-parser');
 // convert data to objects
+// makes it available under req.body property.
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 
+app.use(morgan('common'));
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+//A rendering engine enables you to use static files in your application.
+app.set('view engine', 'html');  // start using rule
 //Setup the static assets directories
 app.use(express.static('img'));
 app.use(express.static('css'));
@@ -54,6 +58,7 @@ app.post('/add',function(req,res){
     });
     console.log(db);
     
-    res.render('listtasks.html',{db:db});
+    res.render('listtasks.html',{db:db}); 
+    // view engine substitue db(name) to db(array)
 })
 app.listen(8080);
